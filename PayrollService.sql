@@ -32,4 +32,23 @@ select name,salary from employee_payroll where start_date between CAST('2018-01-
 --UC6
 Alter table employee_payroll add gender char;
 
-update employee_payroll set gender='M' where name='Bill' or name='Bharati';
+update employee_payroll set gender='M' where name='Bill' or name='kalpesh chindarkar' or name='Ketan Chindarkar';
+update employee_payroll set gender='F' where name='Bharati';
+Select * from employee_payroll;
+
+--UC7
+--Average
+select AVG(salary) from employee_payroll;
+--Sum 
+select SUM(salary) from employee_payroll;
+--Minimum
+select MIN(salary) from employee_payroll;
+--Maximum
+select MAX(salary) from employee_payroll;
+--Count
+select COUNT(salary) from employee_payroll;
+-- Group by 
+SELECT SUM(salary) FROM employee_payroll
+WHERE gender = 'F' GROUP BY gender;
+SELECT SUM(salary) FROM employee_payroll
+WHERE gender = 'M' GROUP BY gender;
