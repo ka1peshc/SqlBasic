@@ -16,3 +16,5 @@ start_date Date);
 insert into employee_payroll values (101,'kalpesh chindarkar','52000','2022/01/01'),
 (304,'Ketan Chindarkar','58000','2021/05/14');
 
+--UC4
+select * from employee_payroll;
