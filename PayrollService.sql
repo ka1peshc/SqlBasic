@@ -52,3 +52,8 @@ SELECT SUM(salary) FROM employee_payroll
 WHERE gender = 'F' GROUP BY gender;
 SELECT SUM(salary) FROM employee_payroll
 WHERE gender = 'M' GROUP BY gender;
+
+--UC 8
+Alter table employee_payroll add address varchar(255) default 'TBS'; 
+Alter table employee_payroll add phonenumber varchar(255);
+Alter table employee_payroll add department varchar(255) not null default 'bench';
