@@ -12,4 +12,7 @@ name varchar(100),
 salary int,
 start_date Date);
 
+--UC3
+insert into employee_payroll values (101,'kalpesh chindarkar','52000','2022/01/01'),
+(304,'Ketan Chindarkar','58000','2021/05/14');
 
