@@ -57,3 +57,6 @@ WHERE gender = 'M' GROUP BY gender;
 Alter table employee_payroll add address varchar(255) default 'TBS'; 
 Alter table employee_payroll add phonenumber varchar(255);
 Alter table employee_payroll add department varchar(255) not null default 'bench';
+
+--UC9
+Alter table employee_payroll add basicPay float, Deduction float, TaxablePay float, IncomeTax float, NeyPay float;
