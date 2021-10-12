@@ -18,3 +18,13 @@ insert into employee_payroll values (101,'kalpesh chindarkar','52000','2022/01/0
 
 --UC4
 select * from employee_payroll;
+
+--UC5
+--INSERTING FEW RECORD
+insert into employee_payroll values (201,'Bill','91050','2019/01/01'),
+(204,'Bharati','80000','2020/05/14');
+--searching for employee name is bill
+select salary from employee_payroll where name='Bill';
+
+--searching name and salary for people how join from 2018-01-01
+select name,salary from employee_payroll where start_date between CAST('2018-01-01' AS date) and GETDATE();
