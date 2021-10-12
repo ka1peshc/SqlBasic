@@ -28,3 +28,8 @@ select salary from employee_payroll where name='Bill';
 
 --searching name and salary for people how join from 2018-01-01
 select name,salary from employee_payroll where start_date between CAST('2018-01-01' AS date) and GETDATE();
+
+--UC6
+Alter table employee_payroll add gender char;
+
+update employee_payroll set gender='M' where name='Bill' or name='Bharati';
