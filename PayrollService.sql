@@ -60,3 +60,8 @@ Alter table employee_payroll add department varchar(255) not null default 'bench
 
 --UC9
 Alter table employee_payroll add basicPay float, Deduction float, TaxablePay float, IncomeTax float, NeyPay float;
+
+--UC10
+insert into employee_payroll values
+(901,'Terisa',3000000, '2018-01-03' , 'F','New York',9922003699,'Marketting',  3000000.00, 1000000.00, 2000000.00, 500000.00, 1500000.00)
+, (911,'Terisa',3000000, '2018-01-03' , 'F','New York',9922003699,'Sales',  3000000.00, 1000000.00, 2000000.00, 500000.00, 1500000.00);
