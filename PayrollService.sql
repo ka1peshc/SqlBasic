@@ -82,19 +82,20 @@ EmployeeName varchar(100) NOT NULL,
 EmployeePhoneNumber int not null,
 EmployeeAddress varchar(255),
 EmployeeGender char(1),
-CompanyID int,
-Foreign key(CompanyID) REFERENCES employee(id)
+EmployeeJoining date,
+Fk_CompanyID int,
+Foreign key(Fk_CompanyID) REFERENCES Company(CompanyID)
 );
 
 CREATE TABLE Payment(
 PaymentID int identity(1,1) PRIMARY KEY,
-EmployeeID int,
-basicPay float, 
-Deduction float, 
-TaxablePay float, 
-IncomeTax float, 
-NetPay float
-Foreign key(EmployeeID) REFERENCES employee(id)
+Fk_EmployeeID int not null,
+basicPay float not null, 
+Deduction float not null, 
+TaxablePay float not null, 
+IncomeTax float not null,
+NetPay float  not null
+Foreign key(Fk_EmployeeID) REFERENCES employee(id)
 );
 
 CREATE TABLE EmployeeDepartment(
@@ -103,3 +104,21 @@ DepartmentID int,
 Foreign key(EmployeeId) REFERENCES employee(id),
 Foreign key(DepartmentID) REFERENCES Department(DepartmentID)
 );
+--Insert in Company and Department
+INSERT INTO Company VALUES ('Apple'),('Amazon'),('Microsoft');
+INSERT INTO Department Values ('Marketing'),('Sales'),('R&D');
+
+--Insert in Employee table
+INSERT INTO employee VALUES ('Kalpesh',986926455,'Sewri Mumbai','M','2019/02/15',(SELECT CompanyID FROM Company WHERE CompanyName='Amazon'));
+INSERT INTO employee VALUES ('Abhishek','828241418','Khar Mumbai','M','2017/01/28',(Select CompanyID from Company where CompanyName='Microsoft'));
+INSERT INTO employee VALUES ('Terissa','78787878','Mumbai','F','2018/05/07',(Select CompanyID from Company where CompanyName='Apple'));
+
+--Insert in Payment table
+INSERT INTO Payment VALUES ((Select ID from employee where EmployeeName='Kalpesh'),50000,5000,45000,2500,42500);
+INSERT INTO Payment VALUES ((Select ID from employee where EmployeeName='Abhishek'),60000,6000,54000,2500,53500);
+INSERT INTO Payment VALUES ((Select ID from employee where EmployeeName='Terissa'),60000,6000,54000,2500,53500);
+
+--Insert in EmployeeDepartment
+INSERT INTO EmployeeDepartment VALUES ((Select ID from employee where EmployeeName='Terissa'),(SELECT DepartmentID from Department where DepartmentName='Marketing')),
+((Select ID from employee where EmployeeName='Terissa'),(SELECT DepartmentID from Department where DepartmentName='Sales'));
+
