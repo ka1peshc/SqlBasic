@@ -122,3 +122,20 @@ INSERT INTO Payment VALUES ((Select ID from employee where EmployeeName='Terissa
 INSERT INTO EmployeeDepartment VALUES ((Select ID from employee where EmployeeName='Terissa'),(SELECT DepartmentID from Department where DepartmentName='Marketing')),
 ((Select ID from employee where EmployeeName='Terissa'),(SELECT DepartmentID from Department where DepartmentName='Sales'));
 
+--UC12
+--Display all employees
+SELECT * FROM employee;
+
+--Display employee name is Abhishek
+SELECT * FROM employee WHERE EmployeeName='Abhishek';
+
+--Display employee from joining date 2018/01/01
+select * from employee where EmployeeJoining between CAST('2018-01-01' AS date) and GETDATE();
+
+--Perform aggregate function on payroll
+Select COUNT(basicPay) as COUNTOfPay from Payment;
+Select SUM(basicPay) as SumOfPay from PaymenT;
+Select AVG(basicPay) as AVGOfPay from Payment;
+Select MIN(basicPay) as MINOfPay from Payment;
+Select MAX(basicPay) as MAXOfPay from Payment;
+
