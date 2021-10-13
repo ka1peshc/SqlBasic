@@ -65,3 +65,41 @@ Alter table employee_payroll add basicPay float, Deduction float, TaxablePay flo
 insert into employee_payroll values
 (901,'Terisa',3000000, '2018-01-03' , 'F','New York',9922003699,'Marketting',  3000000.00, 1000000.00, 2000000.00, 500000.00, 1500000.00)
 , (911,'Terisa',3000000, '2018-01-03' , 'F','New York',9922003699,'Sales',  3000000.00, 1000000.00, 2000000.00, 500000.00, 1500000.00);
+select * from employee_payroll where name='Terisa';
+
+--UC 11
+CREATE TABLE Company(
+CompanyID int identity(1,1) PRIMARY KEY,
+CompanyName varchar(100) not null);
+
+CREATE TABLE Department(
+DepartmentID int identity(1,1) PRIMARY KEY,
+DepartmentName varchar(100) not null);
+
+CREATE TABLE employee(
+ID int identity(1,1) PRIMARY KEY,
+EmployeeName varchar(100) NOT NULL,
+EmployeePhoneNumber int not null,
+EmployeeAddress varchar(255),
+EmployeeGender char(1),
+CompanyID int,
+Foreign key(CompanyID) REFERENCES employee(id)
+);
+
+CREATE TABLE Payment(
+PaymentID int identity(1,1) PRIMARY KEY,
+EmployeeID int,
+basicPay float, 
+Deduction float, 
+TaxablePay float, 
+IncomeTax float, 
+NetPay float
+Foreign key(EmployeeID) REFERENCES employee(id)
+);
+
+CREATE TABLE EmployeeDepartment(
+EmployeeID int,
+DepartmentID int,
+Foreign key(EmployeeId) REFERENCES employee(id),
+Foreign key(DepartmentID) REFERENCES Department(DepartmentID)
+);
